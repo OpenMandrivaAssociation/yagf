@@ -15,6 +15,8 @@ BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: 	cmake, qt4-common, qt4-devel, aspell-devel djvulibre-devel tiff-devel
 Requires: 	qt4-common, aspell, cuneiform-linux, aspell-ru, aspell-uk aspell-en
+Provides: cuneiform-qt
+Obsoletes: cuneiform-qt
 
 %description
 YAGF is a graphical front-end for cuneiform OCR tool.
