@@ -10,7 +10,7 @@ License: 	GPL3+
 Group: 		Office
 URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
 
-Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}-Source.tar.bz2
+Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}-Source.tar.gz
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: 	cmake, qt4-common, qt4-devel, aspell-devel djvulibre-devel tiff-devel
