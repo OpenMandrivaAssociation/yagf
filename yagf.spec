@@ -26,7 +26,7 @@ Recognized text is displayed in a editor window where it can be corrected, saved
 YAGF also provides some facilities for a multi-page recognition (see the online help for more details).
 
 %prep
-%setup -q
+%setup -q -n %name-%version-Source
 
 %build
 cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/
