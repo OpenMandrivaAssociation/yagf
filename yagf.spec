@@ -1,5 +1,5 @@
-%define version 0.8.2
-%define	rel	2
+%define version 0.8.3
+%define	rel	1
 %define release %mkrel %{rel}
 
 Summary: Yet Another Graphic Front-end for Cuneiform
@@ -10,7 +10,7 @@ License: 	GPL3+
 Group: 		Office
 URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
 
-Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}.tar.bz2
+Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}-Source.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: 	cmake, qt4-common, qt4-devel, aspell-devel djvulibre-devel tiff-devel
