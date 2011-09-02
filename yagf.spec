@@ -1,5 +1,5 @@
-%define version 0.8.6
-%define	rel	2
+%define version 0.8.7
+%define	rel	1
 %define release %mkrel %{rel}
 
 Summary: Yet Another Graphic Front-end for Cuneiform
@@ -10,14 +10,15 @@ License: 	GPL3+
 Group: 		Office
 URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
 
-Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}-Source.tar.gz
+Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}.tar.gz
 Patch0:		YAGF.desktop.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: 	cmake, qt4-common, qt4-devel, aspell-devel djvulibre-devel tiff-devel
-Requires: 	qt4-common, aspell, cuneiform-linux, aspell-ru, aspell-uk aspell-en
-Provides: cuneiform-qt
-Obsoletes: cuneiform-qt
+Requires: 	qt4-common, aspell, 
+Suggests:	cuneiform-linux
+Suggests:	tesseract
+Requires:	aspell-ru, aspell-uk aspell-en
 
 %description
 YAGF is a graphical front-end for cuneiform OCR tool.
@@ -27,7 +28,7 @@ Recognized text is displayed in a editor window where it can be corrected, saved
 YAGF also provides some facilities for a multi-page recognition (see the online help for more details).
 
 %prep
-%setup -q -n %name-%version-Source
+%setup -q
 %patch0 -p0
 
 %build
