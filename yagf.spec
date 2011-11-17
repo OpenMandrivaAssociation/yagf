@@ -9,11 +9,10 @@ Release:	%{release}
 License: 	GPL3+
 Group: 		Office
 URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
-
 Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}.tar.gz
+Source1: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}-qt.4.6.x.tar.gz
 Patch0:		YAGF.desktop.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
-
 BuildRequires: 	cmake, qt4-common, qt4-devel, aspell-devel djvulibre-devel tiff-devel
 Requires: 	qt4-common, aspell, 
 Suggests:	cuneiform-linux
@@ -28,7 +27,12 @@ Recognized text is displayed in a editor window where it can be corrected, saved
 YAGF also provides some facilities for a multi-page recognition (see the online help for more details).
 
 %prep
-%setup -q
+%if %mdkversion >= 201100
+%setup -T -a 0 -q -n %{name}-%{version}-Source
+%else
+%setup -T -a 1 -q -n %{name}-%{version}-Source
+%endif
+
 %patch0 -p0
 
 %build
