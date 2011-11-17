@@ -28,9 +28,9 @@ YAGF also provides some facilities for a multi-page recognition (see the online 
 
 %prep
 %if %mdkversion >= 201100
-%setup -T -a 0 -q -n %{name}-%{version}-Source
+%setup -T -a 0 -q -n %{name}-%{version}
 %else
-%setup -T -a 1 -q -n %{name}-%{version}-Source
+%setup -T -a 1 -q -n %{name}-%{version}-qt-4.6.x
 %endif
 
 %patch0 -p0
