@@ -1,4 +1,4 @@
-%define version 0.8.7
+%define version 0.8.9
 %define	rel	1
 %define release %mkrel %{rel}
 
@@ -27,11 +27,11 @@ Recognized text is displayed in a editor window where it can be corrected, saved
 YAGF also provides some facilities for a multi-page recognition (see the online help for more details).
 
 %prep
-%if %mdkversion >= 201100
-%setup -T -a 0 -q -n %{name}-%{version}
-%else
-%setup -T -a 1 -q -n %{name}-%{version}-qt-4.6.x
-%endif
+#%if %mdkversion >= 201100
+%setup -q -n %{name}-%{version}
+#%else
+#%setup -T -a 1 -q -n %{name}-%{version}-qt-4.6.x
+#%endif
 
 %patch0 -p0
 
