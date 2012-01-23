@@ -35,7 +35,7 @@ YAGF also provides some facilities for a multi-page recognition (see the online 
 #%endif
 
 %patch0 -p0
-%patch1 -p1
+%patch1 -p0
 
 %build
 cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/
