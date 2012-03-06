@@ -1,18 +1,18 @@
-%define version 0.8.9
-%define	rel	2
+%define version 0.9
+%define	rel	1
 %define release %mkrel %{rel}
 
 Summary: Yet Another Graphic Front-end for Cuneiform
 Name: 		yagf
 Version:	%{version}
 Release:	%{release}
-License: 	GPL3+
+License: 	GPLv3+
 Group: 		Office
 URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
 Source: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}.tar.gz
-Source1: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}-qt.4.6.x.tar.gz
+#Source1: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}-qt.4.6.x.tar.gz
 Patch0:		YAGF.desktop.patch
-Patch1:		yagf-0.8.9-frak.patch
+Patch1:		yagf-0.9-mdv-linkage.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: 	cmake, qt4-common, qt4-devel, aspell-devel djvulibre-devel tiff-devel
 Requires: 	qt4-common, aspell, 
@@ -21,11 +21,11 @@ Suggests:	tesseract
 Requires:	aspell-ru, aspell-uk aspell-en
 
 %description
-YAGF is a graphical front-end for cuneiform OCR tool.
-With YAGF you can open already scanned image files or obtain new images via XSane (scanning results are automatically passed to YAGF).
-Once you have a scanned image you can prepare it for recognition, select particular image areas for recognition, set the recognition language and so no.
-Recognized text is displayed in a editor window where it can be corrected, saved to disk or copied to clipboard.  
-YAGF also provides some facilities for a multi-page recognition (see the online help for more details).
+YAGF is a graphical interface for cuneiform and tesseract text recognition
+tools on the Linux platform. With YAGF you can scan images via XSane, import
+pages from PDF documents, perform images preprocessing and recognize texts
+using cuneiform from a single command center. YAGF also makes it easy to scan
+and recognize several images sequentially.
 
 %prep
 #%if %mdkversion >= 201100
@@ -34,16 +34,19 @@ YAGF also provides some facilities for a multi-page recognition (see the online 
 #%setup -T -a 1 -q -n %{name}-%{version}-qt-4.6.x
 #%endif
 
-%patch0 -p0
-%patch1 -p0
+#patch0 -p0
+%patch1 -p1
 
 %build
-cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/
+%cmake
+#cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/
 %make
 
 %install
 rm -rf %{buildroot}
-make install DESTDIR=%{buildroot}
+pushd build
+%makeinstall_std
+popd
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -52,9 +55,9 @@ make install DESTDIR=%{buildroot}
 %files
 %defattr(-, root, root, 0755)
 %{_bindir}/yagf
-%{_datadir}/yagf/*
-%{_datadir}/yagf/translations/*
+%{_datadir}/yagf
 %{_datadir}/pixmaps/yagf.png
-%{_datadir}/icons/hicolor/96x96/apps/yagf.png
+%{_datadir}/icons/hicolor/*/apps/yagf.*
 %{_libdir}/yagf/libxspreload.so
 %{_datadir}/applications/YAGF.desktop
+%doc AUTHORS ChangeLog DESCRIPTION README
