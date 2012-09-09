@@ -1,15 +1,7 @@
-%define version 0.9.1
-%define	rel	1
-%if %{mdvver} >=201100
-%define release %rel
-%else
-%define release %mkrel %{rel}
-%endif
-
 Summary: Yet Another Graphic Front-end for Cuneiform
 Name: 		yagf
-Version:	%{version}
-Release:	%{release}
+Version:	0.9.2
+Release:	%mkrel 1
 License: 	GPLv3+
 Group: 		Office
 URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
@@ -28,7 +20,7 @@ using cuneiform from a single command center. YAGF also makes it easy to scan
 and recognize several images sequentially.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 find . -type f -executable -exec chmod a-x {} \;
 
