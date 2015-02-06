@@ -1,7 +1,7 @@
 Summary: Yet Another Graphic Front-end for Cuneiform
 Name: 		yagf
 Version:	0.9.2
-Release:	%mkrel 1
+Release:	2
 License: 	GPLv3+
 Group: 		Office
 URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
