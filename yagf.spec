@@ -4,7 +4,7 @@ Version:	0.9.2
 Release:	2
 License: 	GPLv3+
 Group: 		Office
-URL: 		http://symmetrica.net/cuneiform-linux/yagf-en.html
+URL: 		https://symmetrica.net/cuneiform-linux/yagf-en.html
 Source0: 	http://symmetrica.net/cuneiform-linux/yagf-%{version}.tar.gz
 BuildRequires: 	cmake qt4-devel aspell-devel djvulibre-devel tiff-devel
 #Requires: 	qt4-common aspell
